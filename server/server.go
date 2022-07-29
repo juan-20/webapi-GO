@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/juan-20/webapi-GO/server/routes"
+	"github.com/hyperyuri/webapi-with-go/server/routes"
 )
 
 type Server struct {
@@ -14,13 +14,15 @@ type Server struct {
 
 func NewServer() Server {
 	return Server{
-		port:   "300",
+		port:   "5000",
 		server: gin.Default(),
 	}
 }
 
 func (s *Server) Run() {
 	router := routes.ConfigRoutes(s.server)
-	log.Print("Server is running in port ")
-	log.Fatal(router.Run((":" + s.port)))
+
+	log.Printf("Server running at port: %v", s.port)
+	log.Fatal(router.Run(":" + s.port))
+
 }

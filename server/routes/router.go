@@ -1,15 +1,18 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/hyperyuri/webapi-with-go/controllers"
+)
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	// caminho central da API
 	main := router.Group("api/v1")
 	{
 		// caminho especifico
-		users := main.Group("users")
+		books := main.Group("books")
 		{
-			users.GET("/")
+			books.GET("/", controllers.ShowBook)
 		}
 	}
 
